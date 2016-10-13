@@ -1,0 +1,4 @@
+name = Angular 2 for Drupal. 
+description = A module incorporate the angular 2.0 framework into drupal, with a robust example. 
+package = JavaScript Frameworks
+core = 7.x

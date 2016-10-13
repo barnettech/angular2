@@ -1,0 +1,75 @@
+<?php
+/**
+ * @file
+ * A simple module to create a Drupal Block programmatically,
+ * which then can be placed within any region using the block system.
+ * Created by:  Prof. James Barnett, Babson College 2013.
+ */
+
+function angular2_menu() {
+  $items = array();
+  $items['angular2-json'] = array(
+    'title' => 'A basic Drupal page serving up json from a dropbox user account',
+    'page callback' => 'angular2_get_json',
+    'access arguments' => array('access content'),
+  );
+  return $items;
+}
+
+function angular2_get_json() {
+$myItems = '[
+  {"name":"Jonny","age":20},
+  {"name":"John","age":22},
+  {"name":"Jonathan Gouldesohn","age":24},
+  {"name":"Jonathan Tasty","age":28}
+]';
+$myItems = json_decode($myItems);
+watchdog('angular2', '<pre>' . print_r($myItems, TRUE) . '</pre>');
+
+drupal_json_output($myItems);
+
+}
+
+function angular2_block_info() {
+    // This example comes from node.module.
+    $blocks['angular2ExampleBlock'] = array(
+        'info' => t('Angular2 showcase block'),
+        'cache' => DRUPAL_NO_CACHE,
+    );
+    return $blocks;
+}
+
+function angular2_block_view($delta = '') {
+    // This example is adapted from node.module.
+    $block = array();
+    switch ($delta) {
+        case 'angular2ExampleBlock':
+            $output =  array(
+                'first_para' => array(
+                    '#type' => 'markup',
+                    '#markup' => '
+<simple-routing></simple-routing>',
+                    '#attached' => array(
+                        'js' => array(
+                            'sites/all/modules/custom/angular2/js/angular2-polyfills.js',
+                            'sites/all/modules/custom/angular2/js/system.js',
+                            'sites/all/modules/custom/angular2/js/typescript.js',
+                            'sites/all/modules/custom/angular2/js/Rx.js',
+                            'sites/all/modules/custom/angular2/js/angular2.js',
+			    'sites/all/modules/custom/angular2/js/router.dev.js',
+			    'sites/all/modules/custom/angular2/js/http.dev.js',
+                            'sites/all/modules/custom/angular2/js/angular2_showcase_block.js'
+                        ),
+                        'css' => array(
+                            'sites/all/modules/custom/angular2/css/angular2.css',
+                        )
+                    ),
+                )
+            );
+
+            $block['subject'] = t('Example showcasing an Angular 2 Block with routing');
+            $block['content'] = $output;
+            break;
+    }
+    return $block;
+}
