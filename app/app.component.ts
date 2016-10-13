@@ -17,11 +17,7 @@ import ComponentThree from './component-three.ts';
 		<a class='menu-item' [routerLink]="['/ComponentTwo']">Two</a>
 		<a class='menu-item' [routerLink]="['/ComponentThree']">Three</a>
 	</h1>
-        <ul>
-          <li *ngFor="#frnd of result">
-            {{frnd.name}} is {{frnd.age}} years old.
-          </li>
-        </ul>        <div>
+        <div>
 	  <router-outlet></router-outlet>
 	</div>
 	
@@ -33,7 +29,4 @@ import ComponentThree from './component-three.ts';
     {path: '/componentThree', as: 'ComponentThree', useAsDefault: false, component: ComponentThree},
 ])
 export class SimpleRouting {
-  constructor(http:Http) {
-  this.people = http.get('angular2-json').subscribe(result => this.result =result.json());
-  }
 }

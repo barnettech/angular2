@@ -2,7 +2,7 @@ import {Component} from 'angular2/core';
 
 @Component({
     selector: 'component-two',
-    template: 'Component two2'
+    templateUrl: 'sites/all/modules/custom/angular2/app/componenttwo.html'
 })
 export default class ComponentTwo {
 }
