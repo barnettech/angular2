@@ -14,7 +14,7 @@ function angular2_init() {
   drupal_add_js(drupal_get_path('module', 'angular2') . '/js/angular2.js');
   drupal_add_js(drupal_get_path('module', 'angular2') . '/js/router.dev.js');
   drupal_add_js(drupal_get_path('module', 'angular2') . '/js/http.dev.js');
-  drupal_add_js(drupal_get_path('module', 'angular2') . '/js/angular2_showcase_block.js');
+
 }
 
 function angular2_menu() {
@@ -61,6 +61,9 @@ function angular2_block_view($delta = '') {
                     '#markup' => '
 <simple-routing></simple-routing>',
                     '#attached' => array(
+                        'js' => array(
+                            'sites/all/modules/custom/angular2/js/angular2_showcase_block.js'
+                        ),
                         'css' => array(
                             'sites/all/modules/custom/angular2/css/angular2.css',
                         )
