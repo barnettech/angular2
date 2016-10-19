@@ -6,6 +6,17 @@
  * Created by:  Prof. James Barnett, Babson College 2013.
  */
 
+function angular2_init() {
+  drupal_add_js(drupal_get_path('module', 'angular2') . '/js/angular2-polyfills.js');
+  drupal_add_js(drupal_get_path('module', 'angular2') . '/js/system.js');
+  drupal_add_js(drupal_get_path('module', 'angular2') . '/js/typescript.js');
+  drupal_add_js(drupal_get_path('module', 'angular2') . '/js/Rx.js');
+  drupal_add_js(drupal_get_path('module', 'angular2') . '/js/angular2.js');
+  drupal_add_js(drupal_get_path('module', 'angular2') . '/js/router.dev.js');
+  drupal_add_js(drupal_get_path('module', 'angular2') . '/js/http.dev.js');
+  drupal_add_js(drupal_get_path('module', 'angular2') . '/js/angular2_showcase_block.js');
+}
+
 function angular2_menu() {
   $items = array();
   $items['angular2-json'] = array(
@@ -50,16 +61,6 @@ function angular2_block_view($delta = '') {
                     '#markup' => '
 <simple-routing></simple-routing>',
                     '#attached' => array(
-                        'js' => array(
-                            'sites/all/modules/custom/angular2/js/angular2-polyfills.js',
-                            'sites/all/modules/custom/angular2/js/system.js',
-                            'sites/all/modules/custom/angular2/js/typescript.js',
-                            'sites/all/modules/custom/angular2/js/Rx.js',
-                            'sites/all/modules/custom/angular2/js/angular2.js',
-			    'sites/all/modules/custom/angular2/js/router.dev.js',
-			    'sites/all/modules/custom/angular2/js/http.dev.js',
-                            'sites/all/modules/custom/angular2/js/angular2_showcase_block.js'
-                        ),
                         'css' => array(
                             'sites/all/modules/custom/angular2/css/angular2.css',
                         )
